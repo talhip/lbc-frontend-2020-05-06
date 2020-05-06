@@ -8,8 +8,21 @@ const Content = ({ data }) => {
       {offers.map((offer) => {
         const path = "/offer/" + offer._id;
         return (
-          <Link to={path} key={offer._id}>
-            <div className="offer">{offer.title}</div>
+          <Link className="content-item" to={path} key={offer._id}>
+            <div className="offer">
+              <div className="photo-list">
+                <img alt={offer.title} src={offer.picture.secure_url} />
+              </div>
+              <div className="info-list">
+                <div>
+                  <div>{offer.title}</div>
+                  <div>{offer.price}&nbsp;€</div>
+                </div>
+                <div>
+                  <div>{offer.created}</div>
+                </div>
+              </div>
+            </div>
           </Link>
         );
       })}
