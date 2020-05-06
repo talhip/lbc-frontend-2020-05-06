@@ -31,7 +31,8 @@ body {
   width: 140px;
 }
 .header-publish button,
-.header-search button {
+.header-search button,
+.seller-buy button {
   margin-left: 30px;
   margin-right: 10px;
   width: 200px;
@@ -151,4 +152,7 @@ form {
 }
 .seller-item-description > div:last-child {
   margin-bottom: 80px;
+}
+.seller-info > div:first-child {
+  padding: 30px;
 }

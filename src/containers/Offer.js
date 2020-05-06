@@ -57,7 +57,12 @@ const Offer = () => {
                 <div>{data.description}</div>
               </div>
             </div>
-            <div className="seller-info">vendeur</div>
+            <div className="seller-info">
+              <div>{data.creator.account.username}</div>
+              <div className="seller-buy">
+                <button>Acheter</button>
+              </div>
+            </div>
           </div>
           <h2>Current Offer</h2>
           <Link to="/">Go to Offers</Link>
