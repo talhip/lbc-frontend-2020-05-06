@@ -1,0 +1,77 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  background-color: #fafafa;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.header {
+  height: 60px;
+  background-color: #ffffff;
+  margin-bottom: 35px;
+}
+.header-center {
+  display: flex;
+  justify-content: space-between;
+  height: 60px;
+  width: 1066px;
+  margin: 0 auto;
+}
+.header-left {
+  display: flex;
+  align-items: center;
+}
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 140px;
+}
+.header-publish button,
+.header-search button {
+  margin-left: 30px;
+  margin-right: 10px;
+  width: 200px;
+  height: 40px;
+}
+.header-search button {
+  width: 130px;
+  height: 25px;
+}
+.header-connect button {
+  width: 130px;
+  height: 25px;
+}
+.search {
+  width: 810px;
+  height: 130px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  margin-bottom: 40px;
+}
+form {
+  padding: 39px;
+}
+.field,
+.submit-button {
+  height: 44px;
+}
+.field {
+  margin-right: 40px;
+  width: 320px;
+}
+.submit-button {
+  width: 220px;
+}
+.content {
+  width: 1000px;
+  margin: 0 auto;
+}
+.offer {
+  background-color: #ffffff;
+  margin-bottom: 20px;
+}
