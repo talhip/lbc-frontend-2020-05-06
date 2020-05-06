@@ -19,7 +19,15 @@ const Content = ({ data }) => {
                   <div>{offer.price}&nbsp;€</div>
                 </div>
                 <div>
-                  <div>{offer.created}</div>
+                  <span>
+                    {offer.created
+                      .slice(0, 10)
+                      .replace("-", "/")
+                      .replace("-", "/")
+                      .replace("-", "/")}
+                    &nbsp;à
+                  </span>
+                  <span>&nbsp;{offer.created.slice(11, 16)}</span>
                 </div>
               </div>
             </div>

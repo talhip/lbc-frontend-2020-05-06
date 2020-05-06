@@ -28,7 +28,37 @@ const Offer = () => {
       ) : (
         <div>
           <Header />
-          {data.title}
+          <div className="content seller">
+            <div className="seller-item">
+              <div className="seller-item-photo">
+                <div>
+                  <img
+                    className="item-photo-img"
+                    alt={data.title}
+                    src={data.picture.secure_url}
+                  />
+                </div>
+                <div>{data.title}</div>
+                <div>{data.price}&nbsp;€ </div>
+                <div>
+                  <span>
+                    {data.created
+                      .slice(0, 10)
+                      .replace("-", "/")
+                      .replace("-", "/")
+                      .replace("-", "/")}
+                    &nbsp;à
+                  </span>
+                  <span>&nbsp;{data.created.slice(11, 16)}</span>
+                </div>
+              </div>
+              <div className="seller-item-description">
+                <div>Description</div>
+                <div>{data.description}</div>
+              </div>
+            </div>
+            <div className="seller-info">vendeur</div>
+          </div>
           <h2>Current Offer</h2>
           <Link to="/">Go to Offers</Link>
         </div>
