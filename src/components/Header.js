@@ -1,14 +1,17 @@
 import React from "react";
 import logo from "../assets/img/leboncoin-logo.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
     <div className="header">
       <div className="header-center">
         <div className="header-left">
-          <div className="header-logo">
-            <img className="logo" alt="logo" src={logo} />
-          </div>
+          <Link to="/">
+            <div className="header-logo">
+              <img className="logo" alt="logo" src={logo} />
+            </div>
+          </Link>
           <div className="header-publish">
             <button>Déposer une annonce</button>
           </div>
@@ -18,7 +21,9 @@ const Header = () => {
         </div>
         <div className="header-right">
           <div className="header-connect">
-            <button>Se connecter</button>
+            <Link to="/log_in">
+              <button>Se connecter</button>
+            </Link>
           </div>
         </div>
       </div>

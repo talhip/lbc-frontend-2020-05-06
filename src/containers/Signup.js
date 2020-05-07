@@ -34,7 +34,6 @@ const Signup = ({ setUser }) => {
           "https://leboncoin-api.herokuapp.com/user/sign_up",
           user
         );
-        console.log(response.data.token);
         Cookies.set("userToken", response.data.token, { expires: 2000 });
         setUser({ token: response.data.token });
         history.push("/");
@@ -46,8 +45,9 @@ const Signup = ({ setUser }) => {
     }
   };
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className="content">
+      <div>Créez un compte</div>
+      <form className="form-signup" onSubmit={handleSubmit}>
         <span>Pseudo *</span>
         <input
           className="field"
