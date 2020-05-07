@@ -6,13 +6,14 @@ import { Link, useParams } from "react-router-dom";
 const Offer = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
-  const params = useParams();
-  const path = "https://leboncoin-api.herokuapp.com/offer/" + params.id;
+  const { id } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(path);
+        const response = await axios.get(
+          `https://leboncoin-api.herokuapp.com/offer/${id}`
+        );
         setData(response.data);
         setIsLoading(false);
       } catch (error) {
@@ -20,7 +21,7 @@ const Offer = () => {
       }
     };
     fetchData();
-  }, [path]);
+  }, [id]);
   return (
     <>
       {isLoading ? (

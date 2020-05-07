@@ -6,9 +6,12 @@ const Content = ({ data }) => {
   return (
     <div className="content">
       {offers.map((offer) => {
-        const path = "/offer/" + offer._id;
         return (
-          <Link className="content-item" to={path} key={offer._id}>
+          <Link
+            className="content-item"
+            to={`/offer/${offer._id}`}
+            key={offer._id}
+          >
             <div className="offer">
               <div className="photo-list">
                 <img alt={offer.title} src={offer.picture.secure_url} />
