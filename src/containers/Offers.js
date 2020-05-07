@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../components/Header";
 import Search from "../components/Search";
 import Content from "../components/Content";
 import { Link } from "react-router-dom";
@@ -30,7 +29,6 @@ const Offers = () => {
         <div className="load">En cours de chargement... </div>
       ) : (
         <div>
-          <Header />
           <Search search={search} setSearch={setSearch} />
           <Content data={data} />
           <h2>All Offers</h2>

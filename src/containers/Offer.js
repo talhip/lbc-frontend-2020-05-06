@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Header from "../components/Header";
 import { Link, useParams } from "react-router-dom";
 
 const Offer = () => {
@@ -28,7 +27,6 @@ const Offer = () => {
         <div className="load">En cours de chargement... </div>
       ) : (
         <div>
-          <Header />
           <div className="content seller">
             <div className="seller-item">
               <div className="seller-item-photo">
