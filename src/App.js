@@ -4,10 +4,15 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cookies from "js-cookie";
 
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 import Offers from "./containers/Offers";
 import Offer from "./containers/Offer";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
+
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch, faUser);
 
 function App() {
   const tokenFromCookie = Cookies.get("userToken");
@@ -29,6 +34,7 @@ function App() {
           <Offers />
         </Route>
       </Switch>
+      <Footer />
     </Router>
   );
 }

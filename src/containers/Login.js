@@ -60,7 +60,6 @@ const Login = ({ setUser }) => {
       <Link to="/sign_up">
         <button>Créer un compte</button>
       </Link>
-      <div>login</div>
     </div>
   );
 };

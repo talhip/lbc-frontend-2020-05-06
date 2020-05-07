@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../assets/img/leboncoin-logo.png";
 import { Link } from "react-router-dom";
 import Cookies from "js-cookie";
@@ -21,18 +22,27 @@ const Header = ({ user, setUser }) => {
             <button>Déposer une annonce</button>
           </div>
           <div className="header-search">
-            <button>Rechercher</button>
+            <button>
+              <FontAwesomeIcon icon="search" />
+              &nbsp;Rechercher
+            </button>
           </div>
         </div>
         <div className="header-right">
           <div className="header-connect">
             {user ? (
               <Link to="/">
-                <button onClick={handleDisconnect}>Se déconnecter</button>
+                <button onClick={handleDisconnect}>
+                  <FontAwesomeIcon icon="user" />
+                  &nbsp;Se déconnecter
+                </button>
               </Link>
             ) : (
               <Link to="/log_in">
-                <button>Se connecter</button>
+                <button>
+                  <FontAwesomeIcon icon="user" />
+                  &nbsp;Se connecter
+                </button>
               </Link>
             )}
           </div>

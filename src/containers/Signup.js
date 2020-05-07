@@ -90,7 +90,6 @@ const Signup = ({ setUser }) => {
           value="Créer mon Compte Personnel"
         />
       </form>
-      <div>signup</div>
     </div>
   );
 };

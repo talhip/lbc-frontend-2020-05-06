@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Search from "../components/Search";
 import Content from "../components/Content";
-import { Link } from "react-router-dom";
 
 const Offers = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -31,8 +30,6 @@ const Offers = () => {
         <div>
           <Search search={search} setSearch={setSearch} />
           <Content data={data} />
-          <h2>All Offers</h2>
-          <Link to="/offer/:id">Go to Offer</Link>
         </div>
       )}
     </>

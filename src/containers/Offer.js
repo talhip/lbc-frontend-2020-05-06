@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Offer = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -63,8 +63,6 @@ const Offer = () => {
               </div>
             </div>
           </div>
-          <h2>Current Offer</h2>
-          <Link to="/">Go to Offers</Link>
         </div>
       )}
     </>
