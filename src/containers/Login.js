@@ -17,21 +17,25 @@ const Login = ({ setUser }) => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const user = { email: email, password: password };
-    try {
-      const response = await axios.post(
-        "https://leboncoin-api.herokuapp.com/user/log_in",
-        user
-      );
-      Cookies.set("userToken", response.data.token, { expires: 2000 });
-      setUser({ token: response.data.token });
-      history.push("/");
-    } catch (error) {
-      console.log(error.message);
+    if (email && password) {
+      const user = { email: email, password: password };
+      try {
+        const response = await axios.post(
+          "https://leboncoin-api.herokuapp.com/user/log_in",
+          user
+        );
+        Cookies.set("userToken", response.data.token, { expires: 2000 });
+        setUser({ token: response.data.token });
+        history.push("/");
+      } catch (error) {
+        console.log(error.message);
+      }
+    } else {
+      alert("All fields must be filled !");
     }
   };
   return (
-    <div className="content">
+    <div className="content login">
       <div>Connexion</div>
       <form className="form-login" onSubmit={handleSubmit}>
         <span>Adresse email</span>

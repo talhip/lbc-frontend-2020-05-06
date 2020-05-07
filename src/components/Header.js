@@ -1,8 +1,13 @@
 import React from "react";
 import logo from "../assets/img/leboncoin-logo.png";
 import { Link } from "react-router-dom";
+import Cookies from "js-cookie";
 
-const Header = () => {
+const Header = ({ user, setUser }) => {
+  const handleDisconnect = () => {
+    Cookies.remove("userToken");
+    setUser(null);
+  };
   return (
     <div className="header">
       <div className="header-center">
@@ -21,9 +26,15 @@ const Header = () => {
         </div>
         <div className="header-right">
           <div className="header-connect">
-            <Link to="/log_in">
-              <button>Se connecter</button>
-            </Link>
+            {user ? (
+              <Link to="/">
+                <button onClick={handleDisconnect}>Se déconnecter</button>
+              </Link>
+            ) : (
+              <Link to="/log_in">
+                <button>Se connecter</button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

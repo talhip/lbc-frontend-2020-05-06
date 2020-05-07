@@ -27,25 +27,29 @@ const Signup = ({ setUser }) => {
   };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (confirmPassword === password) {
-      const user = { email: email, username: name, password: password };
-      try {
-        const response = await axios.post(
-          "https://leboncoin-api.herokuapp.com/user/sign_up",
-          user
-        );
-        Cookies.set("userToken", response.data.token, { expires: 2000 });
-        setUser({ token: response.data.token });
-        history.push("/");
-      } catch (error) {
-        console.log(error.message);
+    if (name && email && password && confirmPassword) {
+      if (confirmPassword === password) {
+        const user = { email: email, username: name, password: password };
+        try {
+          const response = await axios.post(
+            "https://leboncoin-api.herokuapp.com/user/sign_up",
+            user
+          );
+          Cookies.set("userToken", response.data.token, { expires: 2000 });
+          setUser({ token: response.data.token });
+          history.push("/");
+        } catch (error) {
+          console.log(error.message);
+        }
+      } else {
+        alert("Passwords must be the same !");
       }
     } else {
-      alert("Passwords must be the same!");
+      alert("All fields must be filled !");
     }
   };
   return (
-    <div className="content">
+    <div className="content signup">
       <div>Créez un compte</div>
       <form className="form-signup" onSubmit={handleSubmit}>
         <span>Pseudo *</span>

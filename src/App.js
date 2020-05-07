@@ -14,7 +14,7 @@ function App() {
   const [user, setUser] = useState(tokenFromCookie || null);
   return (
     <Router>
-      <Header />
+      <Header user={user} setUser={setUser} />
       <Switch>
         <Route path="/offer/:id">
           <Offer />
