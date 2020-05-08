@@ -23,9 +23,7 @@ const Offer = () => {
   }, [id]);
   return (
     <>
-      {isLoading ? (
-        <div className="load">En cours de chargement... </div>
-      ) : (
+      {isLoading ? null : (
         <div>
           <div className="content seller">
             <div className="seller-item">

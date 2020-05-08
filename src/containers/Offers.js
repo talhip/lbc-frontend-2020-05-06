@@ -24,11 +24,14 @@ const Offers = () => {
   }, []);
   return (
     <>
-      {isLoading ? (
-        <div className="load">En cours de chargement... </div>
-      ) : (
+      {isLoading ? null : (
         <div>
-          <Search search={search} setSearch={setSearch} />
+          <Search
+            search={search}
+            setSearch={setSearch}
+            setData={setData}
+            setIsLoading={setIsLoading}
+          />
           <Content data={data} />
         </div>
       )}
