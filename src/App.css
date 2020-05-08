@@ -212,6 +212,10 @@ form,
 }
 .login > div:first-child,
 .signup > div:first-child {
+  text-align: center;
+  width: 80%;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #f56b2a;
   padding-top: 30px;
   font-size: 26px;
   font-weight: 700;
@@ -220,6 +224,9 @@ form,
 .signup span {
   font-size: 23px;
   margin-bottom: 20px;
+}
+.signup span:last-of-type {
+  font-size: 16px;
 }
 .login form input {
   font-size: 19px;
@@ -247,6 +254,9 @@ form,
   font-size: 15px;
   color: #4183d7;
   background-color: white;
+}
+.checkbox {
+  margin-bottom: 15px;
 }
 .footer {
   margin-top: 250px;

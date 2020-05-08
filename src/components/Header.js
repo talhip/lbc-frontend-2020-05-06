@@ -1,13 +1,15 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import logo from "../assets/img/leboncoin-logo.png";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 
 const Header = ({ user, setUser }) => {
+  const history = useHistory();
   const handleDisconnect = () => {
     Cookies.remove("userToken");
     setUser(null);
+    history.push("/");
   };
   return (
     <div className="header">
@@ -31,12 +33,10 @@ const Header = ({ user, setUser }) => {
         <div className="header-right">
           <div className="header-connect">
             {user ? (
-              <Link to="/">
-                <button onClick={handleDisconnect}>
-                  <FontAwesomeIcon icon="user" />
-                  &nbsp;Se déconnecter
-                </button>
-              </Link>
+              <button onClick={handleDisconnect}>
+                <FontAwesomeIcon icon="user" />
+                &nbsp;Se déconnecter
+              </button>
             ) : (
               <Link to="/log_in">
                 <button>

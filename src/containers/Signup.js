@@ -8,6 +8,7 @@ const Signup = ({ setUser }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [checkbox, setCheckbox] = useState(false);
 
   const handleNameChange = (event) => {
     const value = event.target.value;
@@ -25,27 +26,34 @@ const Signup = ({ setUser }) => {
     const value = event.target.value;
     setConfirmPassword(value);
   };
+  const handleCheckbox = (event) => {
+    setCheckbox(!checkbox);
+  };
   const handleSubmit = async (event) => {
     event.preventDefault();
-    if (name && email && password && confirmPassword) {
-      if (confirmPassword === password) {
-        const user = { email: email, username: name, password: password };
-        try {
-          const response = await axios.post(
-            "https://leboncoin-api.herokuapp.com/user/sign_up",
-            user
-          );
-          Cookies.set("userToken", response.data.token, { expires: 2000 });
-          setUser({ token: response.data.token });
-          history.push("/");
-        } catch (error) {
-          console.log(error.message);
+    if (checkbox) {
+      if (name && email && password && confirmPassword) {
+        if (confirmPassword === password) {
+          const user = { email: email, username: name, password: password };
+          try {
+            const response = await axios.post(
+              "https://leboncoin-api.herokuapp.com/user/sign_up",
+              user
+            );
+            Cookies.set("userToken", response.data.token, { expires: 2000 });
+            setUser(response.data.token);
+            history.push("/");
+          } catch (error) {
+            console.log(error.message);
+          }
+        } else {
+          alert("Passwords must be the same !");
         }
       } else {
-        alert("Passwords must be the same !");
+        alert("All fields must be filled !");
       }
     } else {
-      alert("All fields must be filled !");
+      alert("You must accept the CVG & CGU !");
     }
   };
   return (
@@ -84,6 +92,14 @@ const Signup = ({ setUser }) => {
           value={confirmPassword}
           onChange={handleConfirmPasswordChange}
         />
+        <input
+          className="checkbox"
+          type="checkbox"
+          name="checkbox"
+          value="checkbox"
+          onChange={handleCheckbox}
+        />
+        <span className="check">« J'accepte les CGV et les CGU. »</span>
         <input
           className="submit-button"
           type="submit"
