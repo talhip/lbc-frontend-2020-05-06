@@ -9,6 +9,7 @@ import Offers from "./containers/Offers";
 import Offer from "./containers/Offer";
 import Login from "./containers/Login";
 import Signup from "./containers/Signup";
+import Publish from "./containers/Publish";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
@@ -24,11 +25,15 @@ function App() {
         <Route path="/offer/:id">
           <Offer />
         </Route>
+
         <Route path="/log_in">
           <Login setUser={setUser} />
         </Route>
         <Route path="/sign_up">
           <Signup setUser={setUser} />
+        </Route>
+        <Route path="/publish">
+          <Publish user={user} />
         </Route>
         <Route path="/">
           <Offers />

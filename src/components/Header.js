@@ -20,9 +20,19 @@ const Header = ({ user, setUser }) => {
               <img className="logo" alt="logo" src={logo} />
             </div>
           </Link>
-          <div className="header-publish">
-            <button>Déposer une annonce</button>
-          </div>
+          {user ? (
+            <Link to="/publish">
+              <div className="header-publish">
+                <button>Déposer une annonce</button>
+              </div>
+            </Link>
+          ) : (
+            <Link to="/log_in">
+              <div className="header-publish">
+                <button>Déposer une annonce</button>
+              </div>
+            </Link>
+          )}
           <div className="header-search">
             <button>
               <FontAwesomeIcon icon="search" />

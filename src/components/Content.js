@@ -1,6 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import moment from "moment";
+const formatDate = (date) => {
+  return moment(date).format("DD/MM/YYYY à HH:mm");
+};
 const Content = ({ data }) => {
   const offers = data.offers;
   return (
@@ -22,15 +25,7 @@ const Content = ({ data }) => {
                   <div>{offer.price}&nbsp;€</div>
                 </div>
                 <div>
-                  <span>
-                    {offer.created
-                      .slice(0, 10)
-                      .replace("-", "/")
-                      .replace("-", "/")
-                      .replace("-", "/")}
-                    &nbsp;à
-                  </span>
-                  <span>&nbsp;{offer.created.slice(11, 16)}</span>
+                  <span>{formatDate(offer.created)}</span>
                 </div>
               </div>
             </div>

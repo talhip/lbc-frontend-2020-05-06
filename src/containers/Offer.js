@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import moment from "moment";
+const formatDate = (date) => {
+  return moment(date).format("DD/MM/YYYY à HH:mm");
+};
 
 const Offer = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,15 +42,7 @@ const Offer = () => {
                 <div>{data.title}</div>
                 <div>{data.price}&nbsp;€ </div>
                 <div>
-                  <span>
-                    {data.created
-                      .slice(0, 10)
-                      .replace("-", "/")
-                      .replace("-", "/")
-                      .replace("-", "/")}
-                    &nbsp;à
-                  </span>
-                  <span>&nbsp;{data.created.slice(11, 16)}</span>
+                  <span>{formatDate(data.created)}</span>
                 </div>
               </div>
               <div className="seller-item-description">

@@ -25,7 +25,7 @@ const Login = ({ setUser }) => {
           user
         );
         Cookies.set("userToken", response.data.token, { expires: 2000 });
-        setUser({ token: response.data.token });
+        setUser(response.data.token);
         history.push("/");
       } catch (error) {
         console.log(error.message);

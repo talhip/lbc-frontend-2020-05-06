@@ -117,6 +117,7 @@ form input::placeholder {
   height: 180px;
 }
 .photo-list img {
+  box-sizing: border-box;
   object-fit: contain;
   object-position: center;
 }
@@ -155,7 +156,9 @@ form input::placeholder {
   box-shadow: 0 1px 5px 0 #ede6ed;
   width: 700px;
 }
+.seller-item-photo > div:first-child,
 .seller-item-photo {
+  box-sizing: border-box;
   background-color: white;
 }
 .seller-info {
@@ -171,6 +174,9 @@ form input::placeholder {
   background-color: #cad1d9;
 }
 .item-photo-img {
+  max-width: 700px;
+  max-height: 500px;
+  object-position: center;
   margin: 0 auto;
 }
 .seller-item-photo > div:nth-child(2) {
@@ -198,20 +204,23 @@ form input::placeholder {
 }
 form,
 .login,
-.signup {
+.signup,
+.publish {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .login,
-.signup {
+.signup,
+.publish {
   box-shadow: 0 1px 5px 0 #ede6ed;
   border-radius: 5px;
   width: 600px;
   background-color: white;
 }
 .login > div:first-child,
-.signup > div:first-child {
+.signup > div:first-child,
+.publish > div:first-child {
   text-align: center;
   width: 80%;
   padding-bottom: 15px;
@@ -221,14 +230,17 @@ form,
   font-weight: 700;
 }
 .login span,
-.signup span {
+.signup span,
+.publish span {
   font-size: 23px;
   margin-bottom: 20px;
 }
 .signup span:last-of-type {
   font-size: 16px;
 }
-.login form input {
+.login form input,
+.publish form input,
+.description {
   font-size: 19px;
   padding-left: 15px;
 }
@@ -246,7 +258,8 @@ form,
   padding-top: 60px;
 }
 .login button,
-.signup .submit-button {
+.signup .submit-button,
+.publish .submit-button {
   width: 150px;
   height: 32px;
   margin: 40px 0;
@@ -255,8 +268,20 @@ form,
   color: #4183d7;
   background-color: white;
 }
+.publish .submit-button {
+  font-size: 21px;
+  color: white;
+  background-color: #4183d7;
+}
+.description,
+.price {
+  margin-bottom: 15px;
+}
 .checkbox {
   margin-bottom: 15px;
+}
+.file {
+  margin: 20px 0 30px 90px;
 }
 .footer {
   margin-top: 250px;
