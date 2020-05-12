@@ -8,6 +8,7 @@ const Publish = ({ user }) => {
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const formData = new FormData();
   formData.append("title", title);
@@ -19,6 +20,7 @@ const Publish = ({ user }) => {
     event.preventDefault();
     if (title && description && price && file) {
       try {
+        setIsLoading(true);
         const response = await axios.post(
           "https://leboncoin-api.herokuapp.com/offer/publish",
           formData,
@@ -29,6 +31,7 @@ const Publish = ({ user }) => {
             },
           }
         );
+        setIsLoading(false);
         const id = response.data._id;
         history.push(`/offer/${id}`);
       } catch (error) {
@@ -83,7 +86,12 @@ const Publish = ({ user }) => {
             setFile(event.target.files[0]);
           }}
         />
-        <input className="submit-button" type="submit" value="Valider" />
+        <input
+          className="submit-button"
+          type="submit"
+          disabled={isLoading ? true : false}
+          value="Valider"
+        />
       </form>
     </div>
   );
