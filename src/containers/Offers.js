@@ -3,7 +3,7 @@ import axios from "axios";
 import Search from "../components/Search";
 import Content from "../components/Content";
 
-const Offers = () => {
+const Offers = ({ refresh }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
   const [search, setSearch] = useState("");
@@ -21,7 +21,7 @@ const Offers = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [refresh]);
   return (
     <>
       {isLoading ? null : (

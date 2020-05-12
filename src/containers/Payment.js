@@ -9,11 +9,37 @@ const Payment = ({ user }) => {
   const location = useLocation();
   const { title, price, picture } = location.state;
   const [completed, setCompleted] = useState(false);
+  const amount = price * 100;
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const cardElement = elements.getElement(CardElement);
+      const stripeResponse = await stripe.createToken(cardElement, {
+        name: "l'id de l'utilisateur",
+      });
+      const stripeToken = stripeResponse.token.id;
+      const response = await axios.post(
+        "https://leboncoin-api.herokuapp.com/payment",
+        {
+          amount: amount,
+          title: title,
+          token: stripeToken,
+        }
+      );
+
+      if (response.data.status === "succeeded") {
+        setCompleted(true);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <div>
       {completed ? (
-        <div>Paiement effectué !</div>
+        <div className="done-payment">Paiement effectué !</div>
       ) : (
         <div className="content payment">
           <div className="payment-item">
@@ -24,7 +50,7 @@ const Payment = ({ user }) => {
             <div>{title}</div>
             <div>{price}&nbsp;€</div>
             <div>Vos coordonnées bancaires</div>
-            <form>
+            <form onSubmit={handleSubmit}>
               <CardElement className="card" />
               <button className="payment-button" type="submit">
                 Procéder au paiement

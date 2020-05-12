@@ -323,6 +323,10 @@ form,
   height: 35px;
   width: 180px;
 }
+.done-payment {
+  text-align: center;
+  font-weight: 700;
+}
 .footer {
   margin-top: 250px;
   text-align: center;

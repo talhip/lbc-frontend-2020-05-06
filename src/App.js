@@ -16,16 +16,23 @@ import Payment from "./containers/Payment";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
+require("dotenv").config();
 library.add(faSearch, faUser);
 
-const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
+const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_API_KEY);
 
 function App() {
   const tokenFromCookie = Cookies.get("userToken");
   const [user, setUser] = useState(tokenFromCookie || null);
+  const [refresh, setRefresh] = useState(false);
   return (
     <Router>
-      <Header user={user} setUser={setUser} />
+      <Header
+        user={user}
+        setUser={setUser}
+        refresh={refresh}
+        setRefresh={setRefresh}
+      />
       <Switch>
         <Route path="/offer/:id">
           <Offer user={user} />
@@ -45,7 +52,7 @@ function App() {
           </Elements>
         </Route>
         <Route path="/">
-          <Offers />
+          <Offers refresh={refresh} />
         </Route>
       </Switch>
       <Footer />

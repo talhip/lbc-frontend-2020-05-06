@@ -4,22 +4,26 @@ import logo from "../assets/img/leboncoin-logo.png";
 import { Link, useHistory } from "react-router-dom";
 import Cookies from "js-cookie";
 
-const Header = ({ user, setUser }) => {
+const Header = ({ user, setUser, refresh, setRefresh }) => {
   const history = useHistory();
+
   const handleDisconnect = () => {
     Cookies.remove("userToken");
     setUser(null);
+    history.push("/");
+  };
+
+  const handleHome = () => {
+    setRefresh(!refresh);
     history.push("/");
   };
   return (
     <div className="header">
       <div className="header-center">
         <div className="header-left">
-          <Link to="/">
-            <div className="header-logo">
-              <img className="logo" alt="logo" src={logo} />
-            </div>
-          </Link>
+          <div className="header-logo" onClick={handleHome}>
+            <img className="logo" alt="logo" src={logo} />
+          </div>
           {user ? (
             <Link to="/publish">
               <div className="header-publish">
