@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Cookies from "js-cookie";
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -16,6 +18,8 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch, faUser } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch, faUser);
 
+const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
+
 function App() {
   const tokenFromCookie = Cookies.get("userToken");
   const [user, setUser] = useState(tokenFromCookie || null);
@@ -24,7 +28,7 @@ function App() {
       <Header user={user} setUser={setUser} />
       <Switch>
         <Route path="/offer/:id">
-          <Offer />
+          <Offer user={user} />
         </Route>
         <Route path="/log_in">
           <Login setUser={setUser} />
@@ -36,7 +40,9 @@ function App() {
           <Publish user={user} />
         </Route>
         <Route path="/payment">
-          <Payment user={user} />
+          <Elements stripe={stripePromise}>
+            <Payment user={user} />
+          </Elements>
         </Route>
         <Route path="/">
           <Offers />

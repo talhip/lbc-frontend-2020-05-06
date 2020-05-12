@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import moment from "moment";
 const formatDate = (date) => {
   return moment(date).format("DD/MM/YYYY à HH:mm");
 };
 
-const Offer = () => {
+const Offer = ({ user }) => {
+  const history = useHistory();
   const [isLoading, setIsLoading] = useState(true);
   const [data, setData] = useState({});
   const { id } = useParams();
+
+  const handleBuy = () => {
+    if (user) {
+      history.push("/payment", {
+        title: data.title,
+        price: data.price,
+        picture: data.picture.secure_url,
+      });
+    } else {
+      history.push("/log_in");
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,7 +66,7 @@ const Offer = () => {
             <div className="seller-info">
               <div>{data.creator.account.username}</div>
               <div className="seller-buy">
-                <button>Acheter</button>
+                <button onClick={handleBuy}>Acheter</button>
               </div>
             </div>
           </div>

@@ -43,7 +43,8 @@ body {
   height: 40px;
 }
 .header-publish button,
-.seller-info button {
+.seller-info button,
+.payment-item button {
   font-size: 15px;
   color: white;
   background-color: #f56b2a;
@@ -282,6 +283,45 @@ form,
 }
 .file {
   margin: 20px 0 30px 90px;
+}
+.payment {
+  display: flex;
+  justify-content: center;
+}
+.payment-item {
+  box-shadow: 0 1px 5px 0 #ede6ed;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 700px;
+  background-color: #ffffff;
+}
+.payment-item > div:first-child {
+  font-weight: 700;
+  padding: 30px 0 10px 0;
+  border-bottom: 3px solid #f56b2a;
+}
+.payment-item div:nth-child(2) {
+  margin: 50px 0;
+}
+.payment-item div:nth-child(4) {
+  margin: 20px 0;
+  color: #f56b2a;
+}
+.payment-item div:nth-child(5) {
+  margin: 20px 0;
+  font-weight: 700;
+}
+.card {
+  width: 400px;
+  height: 30px;
+}
+.payment-button {
+  margin: 15px 0 40px 0;
+  border-radius: 5px;
+  height: 35px;
+  width: 180px;
 }
 .footer {
   margin-top: 250px;
