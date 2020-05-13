@@ -14,7 +14,7 @@ const Offer = ({ user }) => {
 
   const handleBuy = () => {
     if (user) {
-      history.push("/payment", {
+      history.push(`/payment/${id}`, {
         title: data.title,
         price: data.price,
         picture: data.picture.secure_url,

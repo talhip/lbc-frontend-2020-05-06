@@ -61,6 +61,10 @@ body {
   width: 130px;
   height: 25px;
 }
+.header-logo:hover {
+  box-shadow: 0 1px 5px 0 #ede6ed;
+  cursor: pointer;
+}
 .search {
   border-radius: 5px;
   box-shadow: 0 1px 5px 0 #ede6ed;
